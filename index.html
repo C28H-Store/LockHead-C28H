@@ -18,7 +18,6 @@ body {
     overflow-x: hidden;
 }
 
-/* ================= TÂM ẢO ================= */
 #custom-crosshair {
     position: fixed;
     top: 50%;
@@ -49,7 +48,6 @@ body {
     border-radius: 50%;
 }
 
-/* ================= MÀN HÌNH KHÓA KEY (XANH ĐEN) ================= */
 #key-lock-screen {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
@@ -79,7 +77,6 @@ body {
     color: #38bdf8;
     font-size: 22px;
     font-weight: 900;
-    letter-spacing: 1px;
 }
 
 .lock-card p {
@@ -144,7 +141,6 @@ body {
     min-height: 16px;
 }
 
-/* ================= GIAO DIỆN CHÍNH (ĐEN TRẮNG) ================= */
 .app-container {
     display: none;
     max-width: 450px;
@@ -157,13 +153,11 @@ body {
     padding: 15px 0;
     border-bottom: 1px solid #333333;
     margin-bottom: 20px;
-    position: relative;
 }
 
 .title-main {
     font-size: 26px;
     font-weight: 900;
-    letter-spacing: 2px;
     color: #ffffff;
     margin: 0;
 }
@@ -172,7 +166,6 @@ body {
     font-size: 13px;
     color: #888888;
     margin-top: 4px;
-    letter-spacing: 1px;
 }
 
 .decor-line {
@@ -216,8 +209,7 @@ body {
 
 .c28h-tag {
     position: absolute;
-    top: -6px;
-    right: 10px;
+    top: -6px; right: 10px;
     font-size: 8px;
     background: #222222;
     color: #aaaaaa;
@@ -226,15 +218,8 @@ body {
     border: 1px solid #333333;
 }
 
-.feature-name {
-    font-size: 14px;
-    font-weight: bold;
-    color: #ffffff;
-}
-
 .toggle-btn {
-    width: 46px;
-    height: 24px;
+    width: 46px; height: 24px;
     border-radius: 12px;
     background: #333333;
     border: none;
@@ -253,14 +238,8 @@ body {
     transition: 0.2s;
 }
 
-.toggle-btn.on {
-    background: #ffffff;
-}
-
-.toggle-btn.on::after {
-    transform: translateX(22px);
-    background: #000000;
-}
+.toggle-btn.on { background: #ffffff; }
+.toggle-btn.on::after { transform: translateX(22px); background: #000000; }
 
 .input-box {
     width: 100%;
@@ -312,15 +291,8 @@ body {
     border: 1px solid #222222;
 }
 
-.sens-item {
-    font-size: 11px;
-    color: #ccc;
-}
-
-.sens-val {
-    font-weight: bold;
-    color: #fff;
-}
+.sens-item { font-size: 11px; color: #ccc; }
+.sens-val { font-weight: bold; color: #fff; }
 
 .status-box {
     background: #080808;
@@ -332,11 +304,11 @@ body {
     color: #888888;
     text-align: center;
 }
-
-.status-box div {
-    margin-bottom: 4px;
-}
 </style>
+
+<!-- Thư viện Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 </head>
 <body>
 
@@ -345,7 +317,6 @@ body {
     <div class="crosshair-dot"></div>
 </div>
 
-<!-- ================= MÀN HÌNH KHÓA KEY ================= -->
 <div id="key-lock-screen">
     <div class="lock-card">
         <h2>C28H PANEL</h2>
@@ -362,7 +333,6 @@ body {
     </div>
 </div>
 
-<!-- ================= GIAO DIỆN CHÍNH ================= -->
 <div class="app-container" id="main-app">
     <div class="header-decor">
         <div class="title-main">HeadLock C28H</div>
@@ -370,18 +340,18 @@ body {
         <div class="decor-line">❖ ───── C28H SYSTEM iOS ───── ❖</div>
     </div>
 
-    <!-- NỘI DUNG KEY NORMAL -->
+    <!-- NORMAL CONTENT -->
     <div id="normal-content" style="display: none;">
         <div class="section-label">🎮 Free Fire Thường</div>
         <div class="mode-box">
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Aimlock V1</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Fix Rung</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Fix Lố</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Bám Đầu</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Nhạy Màn</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Aimlock V1</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Fix Rung</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Fix Lố</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Bám Đầu</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Nhạy Màn</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
             
             <div style="margin-top: 10px;">
-                <span style="font-size: 12px; color: #aaa;">Cấu hình DPI (1-120):</span>
+                <span style="font-size: 12px; color: #aaa;">DPI (1-120):</span>
                 <input type="number" class="input-box" placeholder="Nhập DPI..." oninput="limitInput(this, 120)">
             </div>
             <button class="btn-activate" onclick="alert('Kích hoạt thành công!')">KÍCH HOẠT V1</button>
@@ -389,40 +359,40 @@ body {
 
         <div class="section-label">🎮 Free Fire Max</div>
         <div class="mode-box">
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Aimlock V1</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Fix Rung</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Fix Lố</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Bám Đầu</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Nhạy Màn</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Aimlock V1</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Fix Rung</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Fix Lố</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Bám Đầu</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Nhạy Màn</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
             
             <div style="margin-top: 10px;">
-                <span style="font-size: 12px; color: #aaa;">Cấu hình DPI (1-120):</span>
+                <span style="font-size: 12px; color: #aaa;">DPI (1-120):</span>
                 <input type="number" class="input-box" placeholder="Nhập DPI..." oninput="limitInput(this, 120)">
             </div>
             <button class="btn-activate" onclick="alert('Kích hoạt thành công!')">KÍCH HOẠT V1</button>
         </div>
     </div>
 
-    <!-- NỘI DUNG KEY PREMIUM -->
+    <!-- PREMIUM CONTENT -->
     <div id="premium-content" style="display: none;">
         <div class="feature-item highlight">
             <span class="c28h-tag">C28H VIP</span>
-            <span class="feature-name">🎯 Tâm Ảo (Crosshair)</span>
+            <span>🎯 Tâm Ảo (Crosshair)</span>
             <button class="toggle-btn" onclick="toggleCrosshair(this)"></button>
         </div>
 
         <div class="section-label">⚡ Free Fire Thường (Premium)</div>
         <div class="mode-box">
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Aimlock Vip</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">HeadLock</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Nhẹ Tâm</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Bám Đầu</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Fix Rung</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Fix Lố</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Nhạy Màn</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Buff Fps</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Aimlock Vip</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>HeadLock</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Nhẹ Tâm</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Bám Đầu</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Fix Rung</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Fix Lố</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Nhạy Màn</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Buff Fps</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
 
-            <input type="text" class="input-box" id="device-norm" placeholder="Nhập tên dòng máy (VD: iPhone 11)...">
+            <input type="text" class="input-box" placeholder="Nhập tên dòng máy...">
             <input type="number" class="input-box" placeholder="Nhập DPI (1-120)..." oninput="limitInput(this, 120)">
             <button class="btn-action" onclick="getSens('sens-norm')">LẤY ĐỘ NHẠY</button>
             
@@ -431,7 +401,7 @@ body {
                 <div class="sens-item">Hồng tâm: <span class="sens-val">98</span></div>
                 <div class="sens-item">Ống ngắm 2X: <span class="sens-val">95</span></div>
                 <div class="sens-item">Ống ngắm 4X: <span class="sens-val">92</span></div>
-                <div class="sens-item">Ống ngắm súng ngắm: <span class="sens-val">50</span></div>
+                <div class="sens-item">Súng ngắm: <span class="sens-val">50</span></div>
                 <div class="sens-item">Camera tự do: <span class="sens-val">65</span></div>
                 <div class="sens-item" style="grid-column: span 2; color: #38bdf8;">Nút bắn chuẩn: <span class="sens-val">45%</span></div>
             </div>
@@ -440,16 +410,16 @@ body {
 
         <div class="section-label">⚡ Free Fire Max (Premium)</div>
         <div class="mode-box">
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Aimlock Vip</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">HeadLock</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Nhẹ Tâm</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Bám Đầu</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Fix Rung</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Fix Lố</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Nhạy Màn</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
-            <div class="feature-item"><span class="c28h-tag">C28H</span><span class="feature-name">Buff Fps</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Aimlock Vip</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>HeadLock</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Nhẹ Tâm</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Bám Đầu</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Fix Rung</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Fix Lố</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Nhạy Màn</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
+            <div class="feature-item"><span class="c28h-tag">C28H</span><span>Buff Fps</span><button class="toggle-btn" onclick="toggleBtn(this)"></button></div>
 
-            <input type="text" class="input-box" id="device-max" placeholder="Nhập tên dòng máy (VD: iPhone 13 Pro)...">
+            <input type="text" class="input-box" placeholder="Nhập tên dòng máy...">
             <input type="number" class="input-box" placeholder="Nhập DPI (1-120)..." oninput="limitInput(this, 120)">
             <button class="btn-action" onclick="getSens('sens-max')">LẤY ĐỘ NHẠY</button>
             
@@ -458,7 +428,7 @@ body {
                 <div class="sens-item">Hồng tâm: <span class="sens-val">95</span></div>
                 <div class="sens-item">Ống ngắm 2X: <span class="sens-val">90</span></div>
                 <div class="sens-item">Ống ngắm 4X: <span class="sens-val">88</span></div>
-                <div class="sens-item">Ống ngắm súng ngắm: <span class="sens-val">48</span></div>
+                <div class="sens-item">Súng ngắm: <span class="sens-val">48</span></div>
                 <div class="sens-item">Camera tự do: <span class="sens-val">60</span></div>
                 <div class="sens-item" style="grid-column: span 2; color: #38bdf8;">Nút bắn chuẩn: <span class="sens-val">42%</span></div>
             </div>
@@ -466,7 +436,6 @@ body {
         </div>
     </div>
 
-    <!-- BẢNG THÔNG TIN HỆ THỐNG -->
     <div class="status-box">
         <div>🟢 Đang trực tuyến: <span id="online-count" style="color: #fff;">142</span> người</div>
         <div>⏱️ Hết hạn vào: <span id="expiry-date" style="color: #fff;">--/--/---- --:--</span></div>
@@ -474,15 +443,21 @@ body {
 </div>
 
 <script>
-let currentSelectedType = 'normal';
-
-const DURATIONS = {
-    'gio': 3600,
-    'ngay': 86400,
-    'tuan': 604800,
-    'thang': 2592000,
-    'vv': 3153600000
+// THAY THÔNG SỐ FIREBASE CỦA BẠN VÀO ĐÂY
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    databaseURL: "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
 };
+
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+
+let currentSelectedType = 'normal';
 
 function selectKeyType(type) {
     currentSelectedType = type;
@@ -491,14 +466,11 @@ function selectKeyType(type) {
     document.getElementById('user-key-input').placeholder = type === 'normal' ? 'c28hios-...' : 'c28hpre-...';
 }
 
-function toggleBtn(btn) {
-    btn.classList.toggle('on');
-}
+function toggleBtn(btn) { btn.classList.toggle('on'); }
 
 function toggleCrosshair(btn) {
     btn.classList.toggle('on');
-    const ch = document.getElementById('custom-crosshair');
-    ch.style.display = btn.classList.contains('on') ? 'flex' : 'none';
+    document.getElementById('custom-crosshair').style.display = btn.classList.contains('on') ? 'flex' : 'none';
 }
 
 function limitInput(input, max) {
@@ -511,27 +483,44 @@ function getSens(id) {
 }
 
 function validateKey() {
-    const key = document.getElementById('user-key-input').value.trim().toLowerCase();
+    const inputKey = document.getElementById('user-key-input').value.trim();
     const error = document.getElementById('key-error-msg');
     
-    let regex = currentSelectedType === 'normal' 
-        ? /^c28hios-(gio|ngay|tuan|thang|vv)-([a-z0-9]{5})$/
-        : /^c28hpre-(gio|ngay|tuan|thang|vv)-([a-z0-9]{5})$/;
-        
-    const match = key.match(regex);
-    
-    if (match) {
-        const durationType = match[1];
-        const expiryTime = Date.now() + (DURATIONS[durationType] * 1000);
-        
-        localStorage.setItem("c28h_key", key);
-        localStorage.setItem("c28h_type", currentSelectedType);
-        localStorage.setItem("c28h_expiry", expiryTime);
-        
-        loadApp(currentSelectedType, expiryTime);
-    } else {
-        error.innerText = "Key không hợp lệ hoặc sai loại!";
+    if (!inputKey) {
+        error.innerText = "Vui lòng nhập Key!";
+        return;
     }
+
+    error.innerText = "Đang kiểm tra Key...";
+
+    // ĐỌC VÀ KIỂM TRA KEY TRỰC TIẾP TỪ DATABASE
+    database.ref('keys/' + inputKey).once('value').then((snapshot) => {
+        if (snapshot.exists()) {
+            const keyData = snapshot.val();
+            
+            if (keyData.type !== currentSelectedType) {
+                error.innerText = "Key không đúng danh mục (Normal/Premium)!";
+                return;
+            }
+
+            if (Date.now() > keyData.expiryTime) {
+                error.innerText = "Key đã hết hạn sử dụng!";
+                return;
+            }
+
+            // Key hợp lệ! Lưu trạng thái vào máy
+            localStorage.setItem("c28h_key", inputKey);
+            localStorage.setItem("c28h_type", keyData.type);
+            localStorage.setItem("c28h_expiry", keyData.expiryTime);
+
+            loadApp(keyData.type, keyData.expiryTime);
+        } else {
+            error.innerText = "Key không tồn tại trên hệ thống!";
+        }
+    }).catch((err) => {
+        error.innerText = "Lỗi kết nối Server!";
+        console.error(err);
+    });
 }
 
 function loadApp(type, expiryTime) {
@@ -557,7 +546,6 @@ function checkSavedKey() {
     }
 }
 
-// Giả lập người dùng online
 setInterval(() => {
     document.getElementById('online-count').innerText = Math.floor(Math.random() * (200 - 120 + 1)) + 120;
 }, 3000);
