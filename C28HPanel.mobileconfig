@@ -5,13 +5,10 @@
     <key>PayloadContent</key>
     <array>
         <dict>
-            <!-- Mở giao diện ứng dụng tràn màn hình, ẩn thanh duyệt web Safari -->
             <key>FullScreen</key>
             <true/>
-            <!-- Cho phép người dùng gỡ bỏ ứng dụng dễ dàng -->
             <key>IsRemovable</key>
             <true/>
-            <!-- Tên ứng dụng hiển thị dưới Icon trên màn hình chính -->
             <key>Label</key>
             <string>HeadLock C28H</string>
             <key>PayloadDescription</key>
@@ -28,9 +25,8 @@
             <string>8B8C7A1E-4F35-4E8A-9C28-000000000001</string>
             <key>PayloadVersion</key>
             <integer>1</integer>
-
             <key>URL</key>
-            <string>https://c28h-store.github.io/APP-Aimlock-By-C28H/index.html</string>
+            <string>https://c28h-store.github.io/LockHead-C28H/index.html</string>
         </dict>
     </array>
 
